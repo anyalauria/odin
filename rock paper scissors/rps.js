@@ -45,29 +45,53 @@ function playRound(computerSelection, playerSelection){
     } 
 };
 
-function game(){
-    playerWins = 0;
-    computerWins = 0;
+function game(playerChoice){
+    let computerSelection = computerPlay();
+    let playerSelection = playerChoice;
+    announcement.textContent = playRound(rps[computerSelection], playerSelection);
 
-    for(let i = 1; i <= 5; i++){
-        let computerSelection = computerPlay();
-        let playerSelection = prompt("Rock, Paper, Scissors. What will you choose?: ");
-        console.log(playRound(rps[computerSelection], playerSelection.toLowerCase()));
-    }
+};
 
-    if (playerWins > computerWins){
-        console.log("You win with " + playerWins + " against " + computerWins);
+function scoreDisplay(){
+    if (playerWins == 5) {
+        announcement.textContent = "You are the supreme winner of this game! Let's start again!";
+        playerWins = 0;
+        computerWins = 0;
     }
-    else if (computerWins > playerWins){
-        console.log("You lose with " + playerWins + " against " + computerWins);
+    if (computerWins == 5) {
+        announcement.textContent = "You are a LOSER in this game! Let's start again!";
+        playerWins = 0;
+        computerWins = 0;
     }
-    else {
-        console.log("It's a tie!");
-    }
+    scoreBoard.textContent = "Player Score: " + playerWins.toString();
+    scoreBoard.textContent += "\r\nComputer Score: " + computerWins.toString()
 };
 
 let playerWins = 0;
 let computerWins = 0;
 
-game();
+rock = document.querySelector('#rock');
+paper = document.querySelector('#paper');
+scissors = document.querySelector('#scissors');
+
+announcement = document.querySelector('#announcement');
+
+scoreBoard = document.querySelector('#score');
+scoreBoard.textContent = "Player Score: " + playerWins.toString();
+scoreBoard.textContent += "\r\nComputer Score: " + computerWins.toString();
+
+rock.addEventListener('click', () => {
+    game("rock");
+    scoreDisplay();
+  });
+paper.addEventListener('click', () => {
+    game("paper");
+    scoreDisplay();
+    
+  });
+scissors.addEventListener('click', () => {
+    game("scissors");
+    scoreDisplay();
+  });
+
 

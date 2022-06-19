@@ -1,15 +1,21 @@
 const container = document.querySelector('#container');
 let gridSize = document.querySelector('input');
+
 function makeGrid(rows, cols) {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    for (c = 0; c < (rows * cols); c++) {
-      let cell = document.createElement("div");
-      container.appendChild(cell).className = "grid-item";
+    container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    for (i = 1; i <= rows; i++) {
+        for (j = 1; j <= cols; j++){
+            let cell = document.createElement("div");
+            cell.style.gridRow = i;
+            cell.style.gridColumn = j;
+            container.appendChild(cell).className = "grid-item";
+
+        }
     }
   }
 
-makeGrid(30, 30);
+makeGrid(16, 16);
 
 let gridItems = document.getElementsByClassName("grid-item");
 

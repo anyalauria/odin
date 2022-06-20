@@ -1,12 +1,17 @@
-
-  
+#controls {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
 #container {
     display: grid;
     height: 600px;
     width: 650px;
     justify-content: center;
+    margin: auto;
   }
   
 .grid-item {
     border: 1px solid #ddd;
   }
+

@@ -11,7 +11,13 @@
 <body>
     <h1> Etch-a-Sketch</h1>
     <div id="controls">
-        <input type="range" min="16" max="64" value="30">
+        <div id="dimensions">16 x 16</div>
+        <input id = "update-size" type="range" min="16" max="64" value="30">
+        <button id="apply"> Update Size </button>
+        <button id="black" class="color">Black</button>
+        <button id="rainbow" class="color">Rainbow</button>
+        <button id="erase" class="color">Erase</button>
+        <button id="clear">Clear</button>
     </div>
      <div id="container"></div>
 </body>
